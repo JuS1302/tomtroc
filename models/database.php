@@ -1,7 +1,7 @@
 <?php
 
 function getPDO() {
-  $config = require 'config/database.php';
+  $config = require ROOT . '/config/database.php';
 
   return new PDO(
     "mysql:host={$config['host']};dbname={$config['dbname']};charset=utf8",
