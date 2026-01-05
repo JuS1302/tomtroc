@@ -525,60 +525,172 @@ footer {
 /* ============================================
    RESPONSIVE
    ============================================ */
-@media (max-width: 968px) {
+@media (max-width: 640px) {
+
+  @media (max-width: 640px) {
+
+  /* ===== HEADER / NAV MOBILE ===== */
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  nav {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  nav ul {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  nav li {
+    margin: 0;
+  }
+
+  .nav-right {
+    margin-left: 0;
+  }
+
+  nav a {
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  nav a .icon img {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Bouton connexion en mobile = lien normal */
+  .btn.btn-outline.btn-sm {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
+
+  /* ===== HERO ===== */
+  .hero-section {
+    padding: 40px 0;
+  }
+
   .hero-content {
     grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    gap: 24px;
+  }
+
+  .hero-image {
+    order: -1; /* image en haut */
+    border-radius: 0;
+  }
+
+  .hero-text {
+    text-align: left;
   }
 
   .hero-text h1 {
-    font-size: 36px;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .hero-text p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .hero-text .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* ===== LIVRES ===== */
+  .books-section {
+    padding: 48px 0;
   }
 
   .books-grid {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: var(--spacing-md);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .book-image {
+    height: 180px;
+  }
+
+  .book-info strong {
+    font-size: 15px;
+  }
+
+  /* ===== COMMENT ÇA MARCHE ===== */
+  .how-it-works-section {
+    padding: 48px 0;
+  }
+
+  .how-it-works-section h2 {
+    font-size: 26px;
+  }
+
+  .how-it-works-section .subtitle {
+    font-size: 14px;
   }
 
   .steps-grid {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  :root {
-    --spacing-xxl: 48px;
-    --spacing-xl: 40px;
+    gap: 16px;
   }
 
-  .header-content {
-    flex-direction: column;
-    gap: var(--spacing-sm);
+  .step-card {
+    padding: 20px;
+    text-align: left;
   }
 
-  nav ul {
-    gap: var(--spacing-md);
-    flex-wrap: wrap;
+  /* ===== IMAGE PLEINE LARGEUR ===== */
+  .full-width-image {
+    height: 420px;
+  }
+
+  /* ===== VALEURS ===== */
+  .values-section {
+    padding: 60px 0;
+  }
+
+  .values-container {
+    max-width: 100%;
+  }
+
+  .values-section h2 {
+    font-size: 26px;
+    margin-bottom: 24px;
+  }
+
+  .values-text {
+    text-align: left;
+  }
+
+  .values-text p {
+    font-size: 14px;
+  }
+
+  .values-icon {
     justify-content: center;
   }
 
-  .hero-text h1 {
-    font-size: 32px;
-  }
-
-  .books-section h2,
-  .how-it-works-section h2,
-  .values-section h2 {
-    font-size: 28px;
-  }
-
-  .books-grid {
-    grid-template-columns: 1fr;
-  }
-
+  /* ===== FOOTER ===== */
   .footer-content {
     flex-direction: column;
-    gap: var(--spacing-md);
-    text-align: center;
+    gap: 16px;
+  }
+
+  .footer-links {
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .footer-logo {
+    margin-left: 0;
   }
 }
