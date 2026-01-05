@@ -257,6 +257,18 @@ nav a:hover {
   padding: var(--spacing-xxl) 0;
 }
 
+.books-section h1 {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+  color: var(--color-text-dark);
+  margin-bottom: var(--spacing-xl);
+}
+
+
 .books-section h2 {
   font-family: var(--font-serif);
   font-size: 36px;
@@ -527,7 +539,6 @@ footer {
    ============================================ */
 @media (max-width: 640px) {
 
-  @media (max-width: 640px) {
 
   /* ===== HEADER / NAV MOBILE ===== */
   .header-content {
@@ -570,8 +581,6 @@ footer {
     padding: 8px 14px;
     font-size: 13px;
   }
-}
-
 
   /* ===== HERO ===== */
   .hero-section {
@@ -613,7 +622,7 @@ footer {
   }
 
   .books-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 16px;
   }
 
