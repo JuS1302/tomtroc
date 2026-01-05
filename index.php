@@ -20,8 +20,8 @@ $page = $_GET['page'] ?? 'home';
 
 switch ($page) {
     case 'home':
-        require 'controllers/homeController.php';
-        home();
+        $controller = new HomeController();
+        $controller->index();
         break;
 
     default:
