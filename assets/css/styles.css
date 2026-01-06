@@ -359,6 +359,121 @@ nav a:hover {
 }
 
 /* ============================================
+   RECHERCHE DE LIVRES
+   ============================================ */
+
+.books-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+  gap: var(--spacing-md);
+}
+
+.books-header h1 {
+  margin-bottom: 0; /* Annule le margin-bottom du h1 global */
+}
+
+.books-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.books-search input[type="search"],
+.books-search input[type="text"] {
+  height: 40px;
+  padding: 0 40px 0 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-family: var(--font-sans);
+  width: 280px;
+  transition: all 0.2s ease;
+}
+
+.books-search input::placeholder {
+  color: var(--color-text-gray);
+}
+
+.books-search input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 172, 102, 0.1);
+}
+
+.books-search .search-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: var(--color-text-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  border-radius: var(--radius-sm);
+}
+
+.books-search .search-btn:hover {
+  color: var(--color-primary);
+  background-color: rgba(0, 172, 102, 0.05);
+}
+
+.books-search .search-btn:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Info de recherche */
+.search-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  padding: 12px 16px;
+  background-color: var(--color-bg-light);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--color-text-dark);
+}
+
+.search-info p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.search-info .clear-search {
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.search-info .clear-search:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+.btn-link {
+  color: var(--color-primary);
+  font-weight: 500;
+  transition: color 0.2s ease;
+  display: inline-block;
+  margin-top: 12px;
+}
+
+.btn-link:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+
+/* ============================================
    SECTION "COMMENT ÇA MARCHE"
    ============================================ */
 .how-it-works-section {
@@ -535,6 +650,173 @@ footer {
 }
 
 /* ============================================
+   PAGE DÉTAIL LIVRE
+   ============================================ */
+
+.book-detail-section {
+  padding: var(--spacing-xl) 0 var(--spacing-xxl);
+  background-color: var(--color-white);
+}
+
+/* Fil d'Ariane */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-text-gray);
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.breadcrumb a {
+  color: var(--color-text-gray);
+  transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+  color: var(--color-primary);
+}
+
+.breadcrumb .separator {
+  color: var(--color-text-gray);
+  user-select: none;
+}
+
+.breadcrumb .current {
+  color: var(--color-text-dark);
+  font-weight: 500;
+}
+
+/* Layout principal */
+.book-detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+/* Image du livre */
+.book-detail-image {
+  position: sticky;
+  top: 100px;
+}
+
+.book-detail-image img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  object-fit: cover;
+}
+
+/* Informations du livre */
+.book-detail-info h1 {
+  font-family: var(--font-serif);
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-text-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+.book-detail-info .book-author {
+  font-size: 18px;
+  color: var(--color-text-gray);
+  margin-bottom: var(--spacing-md);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--spacing-lg) 0;
+}
+
+/* Description */
+.book-description h2,
+.book-owner h2 {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text-gray);
+  margin-bottom: var(--spacing-sm);
+}
+
+.book-description .description-text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--color-text-dark);
+  white-space: pre-line;
+}
+
+.book-description .description-text p {
+  margin-bottom: var(--spacing-md);
+}
+
+.book-description .no-description {
+  color: var(--color-text-gray);
+  font-style: italic;
+  font-size: 15px;
+}
+
+/* Propriétaire */
+.book-owner {
+  margin-bottom: var(--spacing-lg);
+}
+
+.owner-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--color-bg-light);
+  border-radius: var(--radius-md);
+}
+
+.owner-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.owner-info {
+  flex: 1;
+}
+
+.owner-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 2px;
+}
+
+.owner-member-since {
+  font-size: 13px;
+  color: var(--color-text-gray);
+}
+
+/* Bouton d'action */
+.btn-large {
+  width: 100%;
+  max-width: 400px;
+  padding: 16px 32px;
+  font-size: 16px;
+  margin-top: var(--spacing-md);
+}
+
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 640px) {
@@ -701,5 +983,75 @@ footer {
 
   .footer-logo {
     margin-left: 0;
+  }
+
+  /* ===== BOOKS SEARCH ===== */
+
+  .books-search input {
+    height: 36px;
+    padding: 0 36px 0 12px;
+    font-size: 13px;
+  }
+
+  .books-search .search-btn {
+    right: 6px;
+    padding: 6px;
+  }
+
+  .books-search .search-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .book-detail-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .book-detail-image {
+    position: static;
+    text-align: center;
+  }
+
+  .book-detail-image img {
+    max-width: 100%;
+  }
+
+  .book-detail-info h1 {
+    font-size: 32px;
+  }
+
+  .breadcrumb {
+    font-size: 12px;
+  }
+
+  .btn-large {
+    max-width: 100%;
+  }
+}
+
+/* ===== DETAIL LIVRES ===== */
+
+@media (max-width: 640px) {
+  .book-detail-section {
+    padding: var(--spacing-md) 0 var(--spacing-xl);
+  }
+
+  .book-detail-info h1 {
+    font-size: 28px;
+  }
+
+  .book-detail-info .book-author {
+    font-size: 16px;
+  }
+
+  .owner-card {
+    padding: var(--spacing-sm);
+  }
+
+  .owner-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
   }
 }
