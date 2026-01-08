@@ -15,37 +15,71 @@
 
 <!-- HEADER / NAVIGATION -->
 <header>
-    <div class="header-content">
-        <a href="index.php" class="logo">
-          <img src="assets/images/logo.svg" alt="TomTroc">
-        </a>
+  <div class="header-content">
 
-        <nav>
+    <!-- LOGO -->
+    <a href="index.php" class="logo">
+      <img src="assets/images/logo.svg" alt="TomTroc">
+    </a>
+
+    <!-- NAVIGATION -->
+    <nav>
+      <ul class="nav-list">
+
+        <!-- GAUCHE -->
+        <li class="nav-group nav-left">
           <ul>
-            <li class="nav-left"><a href="index.php">Accueil</a></li>
-            <li class="nav-left"><a href="index.php?page=books">Nos livres à l'échange</a></li>
-
-            <li class="nav-right">
-              <a href="index.php?page=messages">
-                <span class="icon"><img src="assets/images/Icon-messagerie.svg" alt=""></span>
-                Messagerie
-              </a>
-            </li>
-
-            <li>
-              <a href="index.php?page=account">
-                <span class="icon"><img src="assets/images/Icon-mon-compte.svg" alt=""></span>
-                Mon compte
-              </a>
-            </li>
-
-            <li>
-              <a href="index.php?page=logout" class="btn btn-outline btn-sm">Connexion</a>
-            </li>
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="index.php?page=books">Nos livres à l’échange</a></li>
           </ul>
-        </nav>
-    </div>
+        </li>
+
+        <!-- DROITE -->
+        <li class="nav-group nav-right">
+          <ul>
+
+            <?php if (isset($_SESSION['user'])) : ?>
+              <li>
+                <a href="index.php?page=messages">
+                  <span class="icon">
+                    <img src="assets/images/Icon-messagerie.svg" alt="">
+                  </span>
+                  Messagerie
+                </a>
+              </li>
+
+              <li>
+                <a href="index.php?page=account">
+                  <span class="icon">
+                    <img src="assets/images/Icon-mon-compte.svg" alt="">
+                  </span>
+                  Mon compte
+                </a>
+              </li>
+
+              <li>
+                <a href="index.php?page=logout" class="btn btn-outline btn-sm">
+                  Déconnexion
+                </a>
+              </li>
+
+            <?php else : ?>
+              <li>
+                <a href="index.php?page=login" class="btn btn-outline btn-sm">
+                  Connexion
+                </a>
+              </li>
+            <?php endif; ?>
+
+          </ul>
+        </li>
+
+      </ul>
+    </nav>
+
+  </div>
 </header>
+
 
 <!-- CONTENU PRINCIPAL (vue dynamique) -->
 <main>

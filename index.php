@@ -39,6 +39,21 @@ switch ($page) {
         $controller->show();
         break;
 
+    case 'login':
+        $controller = new AuthController();
+        $controller->login();
+        break;
+
+    case 'register':
+        $controller = new AuthController();
+        $controller->register();
+        break;
+
+    case 'logout':
+        $controller = new AuthController();
+        $controller->logout();
+        break;
+
     default:
         http_response_code(404);
         echo 'Page non trouvée';
