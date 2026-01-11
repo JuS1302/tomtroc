@@ -2,6 +2,13 @@
 
 class AuthController
 {
+
+  private UserManager $userManager;
+
+  public function __construct()
+  {
+    $this->userManager = new UserManager();
+  }
     /**
      * Page de connexion
      */
@@ -26,7 +33,7 @@ class AuthController
                 $error = "Tous les champs sont obligatoires";
             } else {
                 // Vérifier les identifiants
-                $user = User::findByEmail($email);
+                $user = $this->userManager->findByEmail($email);
 
                 if ($user && password_verify($password, $user['password'])) {
                     // Connexion réussie
@@ -78,13 +85,13 @@ class AuthController
                 $error = "Le mot de passe doit contenir au moins 6 caractères";
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $error = "L'adresse email n'est pas valide";
-            } elseif (User::findByEmail($email)) {
+            } elseif ($this->userManager->findByEmail($email)) {
                 $error = "Cet email est déjà utilisé";
             } else {
                 // Créer l'utilisateur
-                if (User::create($username, $email, $password)) {
+                if ($this->userManager->create($username, $email, $password)) {
                     // Récupérer l'utilisateur créé pour la connexion automatique
-                    $user = User::findByEmail($email);
+                    $user = $this->userManager->findByEmail($email);
 
                     // Connexion automatique
                     $_SESSION['user'] = [

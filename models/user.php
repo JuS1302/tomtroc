@@ -2,31 +2,60 @@
 
 class User
 {
-    public static function create(string $username, string $email, string $password): bool
+    private ?int $id;
+    private string $username;
+    private string $email;
+    private string $password;
+    private \DateTime $createdAt;
+
+    public function __construct(array $data)
     {
-        $pdo = getPDO();
-
-        $sql = "INSERT INTO users (username, email, password)
-                VALUES (:username, :email, :password)";
-
-        $request = $pdo->prepare($sql);
-
-        return $request->execute([
-            'username' => $username,
-            'email' => $email,
-            'password' => password_hash($password, PASSWORD_DEFAULT)
-        ]);
+        $this->id = $data['id'] ?? null;
+        $this->username = $data['username'];
+        $this->email = $data['email'];
+        $this->password = $data['password'] ?? '';
+        $this->createdAt = new \DateTime($data['created_at']);
     }
 
-    public static function findByEmail(string $email): ?array
+    // Getters
+    public function getId(): ?int
     {
-        $pdo = getPDO();
+        return $this->id;
+    }
 
-        $request = $pdo->prepare("SELECT * FROM users WHERE email = :email");
-        $request->execute(['email' => $email]);
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
 
-        $user = $request->fetch(PDO::FETCH_ASSOC);
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
 
-        return $user ?: null;
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    // Setters
+    public function setUsername(string $username): void
+    {
+        $this->username = $username;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
     }
 }

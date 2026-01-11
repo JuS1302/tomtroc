@@ -1,15 +1,22 @@
 <?php
 
-class BookController
-{
+class BookController {
+
+  private BookManager $bookManager;
+
+  public function __construct()
+  {
+    $this->bookManager = new BookManager();
+  }
+
     public function index(): void
     {
         $query = $_GET['title'] ?? null;
 
         if (!empty($query)) {
-            $books = Book::searchByTitle($query);
+            $books = $this->bookManager->searchByTitle($query);
         } else {
-            $books = Book::getAllAvailableWithUser();
+            $books = $this->bookManager->getAllAvailableWithUser();
         }
 
         $view = ROOT . '/views/book/index.php';
@@ -27,7 +34,7 @@ class BookController
             exit;
         }
 
-        $book = Book::getById((int)$id);
+        $book = $this->bookManager->getById((int)$id);
 
         if (!$book) {
             $_SESSION['error'] = "Ce livre n'existe pas";

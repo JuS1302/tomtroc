@@ -1,111 +1,124 @@
 <?php
 
-require_once ROOT . '/config/database.php';
-require_once ROOT . '/models/database.php';
+class Book
+{
+    private ?int $id;
+    private int $userId;
+    private string $title;
+    private string $author;
+    private ?string $description;
+    private ?string $image;
+    private bool $isAvailable;
+    private \DateTime $createdAt;
 
-class Book {
+    // Propriétés supplémentaires pour les jointures
+    private ?string $username = null;
+    private ?string $userEmail = null;
+    private ?string $userCreatedAt = null;
 
-   public static function home():array
-  {
-      $pdo = getPDO();
-
-      $sql = "
-          SELECT
-              books.id,
-              books.title,
-              books.author,
-              books.image,
-              users.username
-          FROM books
-          JOIN users ON books.user_id = users.id
-          WHERE books.is_available = 1
-          ORDER BY books.created_at ASC
-          LIMIT 4
-      ";
-
-      $request = $pdo->prepare($sql);
-      $request->execute();
-
-      return $request->fetchAll(PDO::FETCH_ASSOC);
-  }
-
-
-    public static function getAllAvailableWithUser(): array
+    public function __construct(array $data)
     {
-        $pdo = getPDO();
+        $this->id = $data['id'] ?? null;
+        $this->userId = $data['user_id'];
+        $this->title = $data['title'];
+        $this->author = $data['author'];
+        $this->description = $data['description'] ?? null;
+        $this->image = $data['image'] ?? null;
+        $this->isAvailable = (bool) ($data['is_available'] ?? true);
+        $this->createdAt = new \DateTime($data['created_at']);
 
-        $sql = "
-            SELECT
-                books.id,
-                books.title,
-                books.author,
-                books.image,
-                users.username
-            FROM books
-            JOIN users ON users.id = books.user_id
-            WHERE books.is_available = 1
-            ORDER BY books.created_at DESC
-        ";
-
-        $request = $pdo->prepare($sql);
-        $request->execute();
-
-        return $request->fetchAll(PDO::FETCH_ASSOC);
+        // Propriétés optionnelles (jointures)
+        if (isset($data['username'])) {
+            $this->username = $data['username'];
+        }
+        if (isset($data['email'])) {
+            $this->userEmail = $data['email'];
+        }
+        if (isset($data['user_created_at'])) {
+            $this->userCreatedAt = $data['user_created_at'];
+        }
     }
 
-    public static function searchByTitle(string $query): array
+    // Getters
+    public function getId(): ?int
     {
-      $pdo = getPDO();
-
-      $sql = "
-          SELECT
-              books.id,
-              books.title,
-              books.author,
-              books.image,
-              users.username
-          FROM books
-          JOIN users ON users.id = books.user_id
-          WHERE books.is_available = 1
-            AND books.title LIKE :query
-          ORDER BY books.created_at DESC
-      ";
-
-      $request = $pdo->prepare($sql);
-      $request->execute([
-          'query' => '%' . $query . '%'
-      ]);
-
-      return $request->fetchAll(PDO::FETCH_ASSOC);
+        return $this->id;
     }
 
-    public static function getById(int $id): ?array
+    public function getUserId(): int
     {
-      $pdo = getPDO();
-
-      $sql = "
-          SELECT
-              books.id,
-              books.title,
-              books.author,
-              books.image,
-              books.description,
-              books.is_available,
-              books.created_at,
-              books.user_id,
-              users.username,
-              users.email,
-              users.created_at as user_created_at
-          FROM books
-          JOIN users ON users.id = books.user_id
-          WHERE books.id = :id
-      ";
-
-      $request = $pdo->prepare($sql);
-      $request->execute(['id' => $id]);
-
-      $result = $request->fetch(PDO::FETCH_ASSOC);
-      return $result ?: null;
+        return $this->userId;
     }
 
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    public function getAuthor(): string
+    {
+        return $this->author;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function isAvailable(): bool
+    {
+        return $this->isAvailable;
+    }
+
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    // Getters pour les propriétés de jointure
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function getUserEmail(): ?string
+    {
+        return $this->userEmail;
+    }
+
+    public function getUserCreatedAt(): ?string
+    {
+        return $this->userCreatedAt;
+    }
+
+    // Setters
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
+
+    public function setAuthor(string $author): void
+    {
+        $this->author = $author;
+    }
+
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
+    }
+
+    public function setImage(?string $image): void
+    {
+        $this->image = $image;
+    }
+
+    public function setIsAvailable(bool $isAvailable): void
+    {
+        $this->isAvailable = $isAvailable;
+    }
 }

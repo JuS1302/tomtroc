@@ -54,6 +54,11 @@ switch ($page) {
         $controller->logout();
         break;
 
+    case 'account':
+        $controller = new UserController();
+        $controller->account();
+        break;
+
     default:
         http_response_code(404);
         echo 'Page non trouvée';

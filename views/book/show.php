@@ -6,16 +6,16 @@
       <span class="separator">›</span>
       <a href="?page=books">Nos livres</a>
       <span class="separator">›</span>
-      <span class="current"><?= htmlspecialchars($book['title']) ?></span>
+      <span class="current"><?= htmlspecialchars($book->getTitle()) ?></span>
     </nav>
 
     <div class="book-detail-content">
       <!-- Colonne gauche : Image -->
       <div class="book-detail-image">
-        <?php if (!empty($book['image'])) : ?>
+        <?php if ($book->getImage()) : ?>
          <img
-          src="assets/images/books/<?= htmlspecialchars($book['image']) ?>"
-          alt="<?= htmlspecialchars($book['title']) ?>"
+          src="assets/images/books/<?= htmlspecialchars($book->getImage()) ?>"
+          alt="<?= htmlspecialchars($book->getTitle()) ?>"
           class="book-image"
         >
         <?php else : ?>
@@ -25,10 +25,10 @@
 
       <!-- Colonne droite : Informations -->
       <div class="book-detail-info">
-        <h1><?= htmlspecialchars($book['title']) ?></h1>
+        <h1><?= htmlspecialchars($book->getTitle()) ?></h1>
 
         <p class="book-author">
-          par <?= htmlspecialchars($book['author']) ?>
+          par <?= htmlspecialchars($book->getAuthor()) ?>
         </p>
 
         <hr class="divider">
@@ -36,8 +36,8 @@
         <!-- Description -->
         <div class="book-description">
           <h2>DESCRIPTION</h2>
-          <?php if (!empty($book['description'])) : ?>
-            <p><?= nl2br(htmlspecialchars($book['description'])) ?></p>
+          <?php if ($book->getDescription()) : ?>
+            <p><?= nl2br(htmlspecialchars($book->getDescription())) ?></p>
           <?php else : ?>
             <p class="no-description">Aucune description disponible pour ce livre.</p>
           <?php endif; ?>
@@ -50,25 +50,25 @@
           <h2>PROPRIÉTAIRE</h2>
           <div class="owner-card">
             <div class="owner-avatar">
-              <?= strtoupper(substr($book['username'], 0, 1)) ?>
+              <?= strtoupper(substr($book->getUsername(), 0, 1)) ?>
             </div>
             <div class="owner-info">
-              <p class="owner-name"><?= htmlspecialchars($book['username']) ?></p>
+              <p class="owner-name"><?= htmlspecialchars($book->getUsername()) ?></p>
               <p class="owner-member-since">
-                Membre depuis <?= date('Y', strtotime($book['created_at'])) ?>
+                Membre depuis <?= date('Y', strtotime($book->getUserCreatedAt())) ?>
               </p>
             </div>
           </div>
         </div>
 
         <!-- Bouton d'action -->
-        <?php if (isset($_SESSION['user_id'])) : ?>
-          <?php if ($_SESSION['user_id'] == $book['user_id']) : ?>
-            <a href="?page=account&action=edit_book&id=<?= $book['id'] ?>" class="btn btn-outline">
+        <?php if (isset($_SESSION['user'])) : ?>
+          <?php if ($_SESSION['user']['id'] == $book->getUserId()) : ?>
+            <a href="?page=account&action=edit_book&id=<?= $book->getId() ?>" class="btn btn-outline">
               Modifier ce livre
             </a>
           <?php else : ?>
-            <a href="?page=messages&user_id=<?= $book['user_id'] ?>&book_id=<?= $book['id'] ?>" class="btn btn-primary btn-large">
+            <a href="?page=messages&user_id=<?= $book->getUserId() ?>&book_id=<?= $book->getId() ?>" class="btn btn-primary btn-large">
               Envoyer un message
             </a>
           <?php endif; ?>

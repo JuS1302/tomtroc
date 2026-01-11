@@ -1,10 +1,10 @@
 <li>
-  <a href="index.php?page=book&id=<?= $book['id'] ?>" class="book-card">
+  <a href="index.php?page=book&id=<?= $book->getId() ?>" class="book-card">
     <div class="book-image-wrapper">
-      <?php if (!empty($book['image'])) : ?>
+      <?php if ($book->getImage()) : ?>
         <img
-          src="assets/images/books/<?= htmlspecialchars($book['image']) ?>"
-          alt="<?= htmlspecialchars($book['title']) ?>"
+          src="assets/images/books/<?= htmlspecialchars($book->getImage()) ?>"
+          alt="<?= htmlspecialchars($book->getTitle()) ?>"
           class="book-image"
         >
       <?php else : ?>
@@ -15,10 +15,10 @@
     </div>
 
     <div class="book-info">
-      <strong><?= htmlspecialchars($book['title']) ?></strong>
-      <p class="book-author"><?= htmlspecialchars($book['author']) ?></p>
+      <strong><?= htmlspecialchars($book->getTitle()) ?></strong>
+      <p class="book-author"><?= htmlspecialchars($book->getAuthor()) ?></p>
       <p class="book-seller">
-        Vendu par : <?= htmlspecialchars($book['username']) ?>
+        Vendu par : <?= htmlspecialchars($book->getUsername()) ?>
       </p>
     </div>
   </a>

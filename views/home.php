@@ -10,7 +10,6 @@
         </div>
 
         <div class="hero-image">
-            <!-- IMAGE : Photo de livres empilés devant une porte -->
             <img src="assets/images/hero-books.jpg" alt="Livres empilés devant une porte ancienne">
         </div>
     </div>
@@ -94,16 +93,16 @@
 
       <p>
         Notre association a été créée avec une conviction profonde : chaque livre mérite
-        d’être lu et partagé.
+        d'être lu et partagé.
       </p>
 
       <p>
         Nous sommes passionnés par la création d'une plateforme conviviale qui permet aux
-        lecteurs de se connecter et d’échanger des livres qui attendent patiemment sur
+        lecteurs de se connecter et d'échanger des livres qui attendent patiemment sur
         les étagères.
       </p>
 
-      <p class="values-signature">L’équipe Tom Troc</p>
+      <p class="values-signature">L'équipe Tom Troc</p>
     </div>
 
     <div class="values-icon">
