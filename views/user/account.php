@@ -7,10 +7,32 @@
 
     <!-- Carte profil -->
     <div class="account-card profile-card">
-      <div class="avatar-container">
-        <img src="assets/images/avatar-placeholder.jpg" alt="Avatar" class="avatar-image">
-        <a href="#" class="edit-avatar">modifier</a>
-      </div>
+        <!-- Formulaire avatar séparé avec auto-submit -->
+        <form method="POST" enctype="multipart/form-data">
+          <div class="avatar-container">
+            <?php if ($user->getAvatar()) : ?>
+              <img
+                src="assets/images/avatars/<?= htmlspecialchars($user->getAvatar()) ?>"
+                alt="Avatar"
+                class="avatar-image"
+              >
+            <?php else : ?>
+              <div class="avatar-placeholder">
+                <?= strtoupper(substr($user->getUsername(), 0, 1)) ?>
+              </div>
+            <?php endif; ?>
+
+            <input
+              type="file"
+              name="avatar"
+              accept="image/*"
+              id="avatar-input"
+              onchange="this.form.submit()"
+              style="display: none;"
+            >
+            <label for="avatar-input" class="edit-avatar">modifier</label>
+          </div>
+        </form>
 
       <h2 class="username"><?= htmlspecialchars($user->getUsername()) ?></h2>
       <p class="member-since">
@@ -30,20 +52,22 @@
     <div class="account-card info-card">
       <h3>Vos informations personnelles</h3>
 
-      <form method="POST" action="">
+      <form method="POST">
+        <input type="hidden" name="action" value="profile">
+
         <div class="form-group">
           <label>Adresse email</label>
-          <input type="email" name="email" value="<?= htmlspecialchars($user->getEmail()) ?>" class="form-input">
+          <input type="email" name="email" value="<?= htmlspecialchars($user->getEmail()) ?>" class="form-input" required>
         </div>
 
         <div class="form-group">
           <label>Mot de passe</label>
-          <input type="password" name="password" value="••••••••" class="form-input">
+          <input type="password" name="password" placeholder="Laisser vide pour ne pas changer" class="form-input">
         </div>
 
         <div class="form-group">
           <label>Pseudo</label>
-          <input type="text" name="username" value="<?= htmlspecialchars($user->getUsername()) ?>" class="form-input">
+          <input type="text" name="username" value="<?= htmlspecialchars($user->getUsername()) ?>" class="form-input" required>
         </div>
 
         <button type="submit" class="btn-save">Enregistrer</button>
@@ -98,5 +122,5 @@
       </tbody>
     </table>
   </div>
-        </div>
+  </div>
 </section>
