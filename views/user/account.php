@@ -8,11 +8,11 @@
     <!-- Carte profil -->
     <div class="account-card profile-card">
         <!-- Formulaire avatar séparé avec auto-submit -->
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" action="?page=upload_avatar">
           <div class="avatar-container">
             <?php if ($user->getAvatar()) : ?>
               <img
-                src="assets/images/avatars/<?= htmlspecialchars($user->getAvatar()) ?>"
+                src="assets/images/<?= htmlspecialchars($user->getAvatar()) ?>"
                 alt="Avatar"
                 class="avatar-image"
               >
@@ -111,11 +111,12 @@
               </span>
             </td>
             <td class="book-actions">
-              <a href="edit_book.php?id=<?= $book->getId() ?>" class="action-link">Éditer</a>
-              <a href="delete_book.php?id=<?= $book->getId() ?>" class="action-link action-delete"
-                 onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce livre ?')">
-                Supprimer
-              </a>
+              <a href="?page=book_edit&id=<?= $book->getId() ?>" class="action-link">Éditer</a>
+              <a
+                href="?page=book_delete&id=<?= $book->getId() ?>"
+                class="action-link action-delete"
+                onclick="return confirm('Supprimer ce livre ?')"
+              >Supprimer</a>
             </td>
           </tr>
         <?php endforeach; ?>

@@ -48,17 +48,28 @@
         <!-- Propriétaire -->
         <div class="book-owner">
           <h2>PROPRIÉTAIRE</h2>
-          <div class="owner-card">
-            <div class="owner-avatar">
-              <?= strtoupper(substr($book->getUsername(), 0, 1)) ?>
-            </div>
-            <div class="owner-info">
-              <p class="owner-name"><?= htmlspecialchars($book->getUsername()) ?></p>
-              <p class="owner-member-since">
-                Membre depuis <?= date('Y', strtotime($book->getUserCreatedAt())) ?>
-              </p>
-            </div>
-          </div>
+            <a href="?page=user&id=<?= $book->getUserId() ?>">
+              <div class="owner-card">
+                <div class="owner-avatar">
+                  <?php if ($user->getAvatar()) : ?>
+                    <img
+                      src="assets/images/<?= htmlspecialchars($user->getAvatar()) ?>"
+                      alt="Avatar"
+                    >
+                  <?php else : ?>
+                    <div class="avatar-placeholder">
+                      <?= strtoupper(substr($user->getUsername(), 0, 1)) ?>
+                    </div>
+                  <?php endif; ?>
+                </div>
+                <div class="owner-info">
+                    <?= htmlspecialchars($book->getUsername()) ?>
+                  <p class="owner-member-since">
+                    Membre depuis <?= date('Y', strtotime($book->getUserCreatedAt())) ?>
+                  </p>
+                </div>
+              </div>
+            </a>
         </div>
 
         <!-- Bouton d'action -->

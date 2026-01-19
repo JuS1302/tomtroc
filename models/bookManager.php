@@ -163,4 +163,42 @@ class BookManager {
 
         return $books;
     }
+
+    public function update(Book $book): bool
+  {
+      $pdo = getPDO();
+
+      $sql = "
+          UPDATE books
+          SET
+              title = :title,
+              author = :author,
+              description = :description,
+              image = :image,
+              is_available = :is_available
+          WHERE id = :id
+      ";
+
+      $request = $pdo->prepare($sql);
+
+      return $request->execute([
+          'title'        => $book->getTitle(),
+          'author'       => $book->getAuthor(),
+          'description'  => $book->getDescription(),
+          'image'        => $book->getImage(),
+          'is_available' => $book->isAvailable() ? 1 : 0,
+          'id'           => $book->getId(),
+      ]);
+  }
+
+  public function delete(int $id): bool
+  {
+      $pdo = getPDO();
+
+      $sql = "DELETE FROM books WHERE id = :id";
+
+      $request = $pdo->prepare($sql);
+
+      return $request->execute(['id' => $id]);
+  }
 }

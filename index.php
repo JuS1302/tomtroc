@@ -17,6 +17,11 @@ spl_autoload_register(function ($class) {
         require_once ROOT . '/controllers/' . $class . '.php';
         return;
     }
+
+    if (file_exists(ROOT . '/services/' . $class . '.php')) {
+        require_once ROOT . '/services/' . $class . '.php';
+        return;
+    }
 });
 
 require_once ROOT . '/models/database.php';
@@ -57,6 +62,36 @@ switch ($page) {
     case 'account':
         $controller = new UserController();
         $controller->account();
+        break;
+
+    case 'upload_avatar':
+        $controller = new UserController();
+        $controller->uploadAvatar();
+        break;
+
+    case 'user':
+        $controller = new UserController();
+        $controller->publicAccount();
+        break;
+
+    case 'book_edit':
+        $controller = new BookController();
+        $controller->edit();
+        break;
+
+    case 'book_delete':
+        $controller = new BookController();
+        $controller->delete();
+        break;
+
+    case 'messages':
+        $controller = new MessageController();
+        $controller->index();
+        break;
+
+    case 'message_send':
+        $controller = new MessageController();
+        $controller->send();
         break;
 
     default:

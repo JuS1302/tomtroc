@@ -97,7 +97,7 @@ header {
   border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .header-content {
@@ -605,6 +605,8 @@ nav a:hover {
 }
 
 
+
+
 /* ============================================
    FOOTER
    ============================================ */
@@ -648,6 +650,8 @@ footer {
   width: 24px;
   height: 24px;
 }
+
+
 
 /* ============================================
    PAGE DÉTAIL LIVRE
@@ -815,6 +819,8 @@ footer {
   margin-top: var(--spacing-md);
 }
 
+
+
 /* ============================================
    PAGES AUTHENTIFICATION (Inscription / Connexion)
    ============================================ */
@@ -958,6 +964,8 @@ footer {
   object-position: center;
 }
 
+
+
 /* =========================
    PAGE MON COMPTE
    ========================= */
@@ -979,7 +987,7 @@ footer {
 /* Layout haut de page */
 .account-top {
   display: grid;
-  grid-template-columns: 550px 1fr;
+  grid-template-columns: 440px 1fr;
   gap: 40px;
   margin-bottom: 60px;
 }
@@ -1064,6 +1072,7 @@ footer {
   padding-top: 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   margin-top: 10px;
+  margin-bottom: 60px;
 }
 
 .library-label {
@@ -1285,6 +1294,393 @@ footer {
     margin: 0 auto;
   }
 }
+
+
+/* =========================
+   PAGE MODIFIER LIVRE
+   ========================= */
+
+.book-edit-form {
+  margin-top: 40px;
+}
+
+.book-edit-grid {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* ===== SECTION IMAGE ===== */
+.book-edit-grid > div:first-child {
+  position: sticky;
+  top: 120px;
+}
+
+.book-image-preview {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: var(--spacing-md);
+  display: block;
+}
+
+.book-edit-grid input[type="file"] {
+  font-size: 13px;
+  color: var(--color-text-gray);
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+
+.book-edit-grid input[type="file"]::file-selector-button {
+  padding: 8px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
+  font-size: 13px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-right: 12px;
+}
+
+.book-edit-grid input[type="file"]::file-selector-button:hover {
+  background-color: var(--color-bg-light);
+  border-color: var(--color-primary);
+}
+
+/* ===== SECTION FORMULAIRE ===== */
+.book-edit-grid > div:last-child {
+  background-color: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-md);
+  padding: 40px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.book-edit-grid label {
+  display: block;
+  font-size: 12px;
+  color: var(--color-text-gray);
+  margin-bottom: 12px;
+  margin-top: 28px;
+  font-weight: 400;
+}
+
+.book-edit-grid label:first-of-type {
+  margin-top: 0;
+}
+
+.book-edit-grid input[type="text"],
+.book-edit-grid textarea,
+.book-edit-grid select {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg-light);
+  font-size: 15px;
+  font-family: var(--font-sans);
+  color: var(--color-text-dark);
+  transition: border-color 0.2s;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.book-edit-grid input[type="text"]:focus,
+.book-edit-grid textarea:focus,
+.book-edit-grid select:focus {
+  outline: none;
+  border-bottom-color: var(--color-primary);
+}
+
+.book-edit-grid textarea {
+  min-height: 200px;
+  resize: vertical;
+  line-height: 1.8;
+}
+
+.book-edit-grid select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23A6A6A6' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+}
+
+.book-edit-grid button[type="submit"] {
+  margin-top: 32px;
+  width: 100%;
+  max-width: 300px;
+  padding: 16px 32px;
+}
+
+/* ========================================
+   PAGE MESSAGERIE – GLOBAL
+   ======================================== */
+
+.messaging-page {
+  min-height: calc(100vh - 140px);
+  padding: 60px 0;
+  background-color: var(--color-bg-light);
+}
+
+/* Layout principal */
+.messaging-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 32px;
+}
+
+/* ========================================
+   COLONNE GAUCHE – CONVERSATIONS
+   ======================================== */
+
+.conversations-sidebar {
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.messaging-title {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 400;
+  padding: 0 24px 20px;
+}
+
+.conversations-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.conversation-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px 24px;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.conversation-item:hover {
+  background-color: #ffffff;
+}
+
+.conversation-item.unread {
+  background-color: rgba(0, 172, 102, 0.05);
+}
+
+.conversation-avatar {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.conversation-avatar img,
+.avatar-initial {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.avatar-initial {
+  background-color: var(--color-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.conversation-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.conversation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.conversation-header strong {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.conversation-time {
+  font-size: 12px;
+  color: var(--color-text-dark);
+}
+
+.conversation-preview {
+  font-size: 13px;
+  color: var(--color-text-gray);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ========================================
+   COLONNE DROITE – THREAD
+   ======================================== */
+
+.thread-container {
+  background-color: #FAF9F7;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 680px;
+  z-index: 1;
+}
+
+.thread-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  z-index: 1;
+}
+
+.thread-user strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ========================================
+   MESSAGES
+   ======================================== */
+.messages-container {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Message wrapper */
+.message {
+  max-width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Alignement */
+.message-received {
+  align-self: flex-start;
+}
+
+.message-sent {
+  align-self: flex-end;
+}
+
+/* Ligne meta (avatar + heure) */
+/* Ligne meta (avatar + heure) */
+.message-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #6B6B6B;
+  white-space: nowrap;
+}
+
+/* Alignement à droite pour les messages envoyés */
+.message-sent .message-meta {
+  justify-content: flex-end;
+}
+
+/* Mini avatar */
+.message-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  overflow: hidden; /* 🔑 indispensable */
+  background-color: var(--color-primary);
+  flex-shrink: 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* IMAGE DANS L’AVATAR */
+.message-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+/* Bulle */
+.message-content {
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-dark);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  border-radius: 14px 14px 14px 4px;
+}
+
+/* Bulle envoyée */
+.message-sent .message-content {
+  background-color: #EDF2F6;
+  border-radius: 14px 14px 4px 14px;
+}
+
+
+
+/* ========================================
+   FORMULAIRE ENVOI
+   ======================================== */
+
+.message-form {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: #FAF9F7;
+  display: flex;
+  gap: 12px;
+}
+
+.message-form textarea {
+  flex: 1;
+  resize: none;
+  min-height: 44px;
+  max-height: 120px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.message-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.message-form button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.message-form button:hover {
+  background-color: var(--color-primary-dark);
+}
+
 
 
 /* ============================================
@@ -1568,4 +1964,19 @@ footer {
     padding: 12px 24px;
     font-size: 14px;
   }
+
+
+
+  .book-edit-grid > div:last-child {
+    padding: var(--spacing-md);
+  }
+
+  .book-edit-grid > div:first-child {
+    max-width: 100%;
+  }
+
+  .book-image-preview {
+    aspect-ratio: auto;
+  }
+
 }

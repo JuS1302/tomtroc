@@ -11,7 +11,6 @@ class Book
     private bool $isAvailable;
     private \DateTime $createdAt;
 
-    // Propriétés supplémentaires pour les jointures
     private ?string $username = null;
     private ?string $userEmail = null;
     private ?string $userCreatedAt = null;
@@ -27,7 +26,6 @@ class Book
         $this->isAvailable = (bool) ($data['is_available'] ?? true);
         $this->createdAt = new \DateTime($data['created_at']);
 
-        // Propriétés optionnelles (jointures)
         if (isset($data['username'])) {
             $this->username = $data['username'];
         }
