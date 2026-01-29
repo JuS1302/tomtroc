@@ -27,15 +27,24 @@ class MessageController
     $activeUser = null;
     $messages = [];
 
+    // Si un ID est passé en paramètre, on l'utilise
     if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-        $activeUser = $this->userManager->findById((int) $_GET['id']);
+        $activeUserId = (int) $_GET['id'];
+    }
+    // Sinon, on prend la conversation la plus récente
+    elseif (!empty($conversations)) {
+        $activeUserId = $conversations[0]['other_user_id'];
+    } else {
+        $activeUserId = null;
+    }
+
+    // Charger la conversation active
+    if ($activeUserId) {
+        $activeUser = $this->userManager->findById($activeUserId);
 
         if ($activeUser) {
             $messages = $this->messageManager
                 ->getMessagesBetweenUsers($userId, $activeUser->getId());
-
-            $this->messageManager
-                ->markAsRead($activeUser->getId(), $userId);
         }
     }
 

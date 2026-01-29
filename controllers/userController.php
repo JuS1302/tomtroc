@@ -102,7 +102,7 @@ class UserController
     $_FILES['image'] = $_FILES['avatar'];
 
     // upload physique
-    $this->uploadImage->uploadImage('');
+    $this->uploadImage->uploadImage('avatars/');
 
     // mise à jour utilisateur
     $user = $this->userManager->findById($_SESSION['user']['id']);

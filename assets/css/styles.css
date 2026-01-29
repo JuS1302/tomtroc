@@ -1681,6 +1681,31 @@ footer {
   background-color: var(--color-primary-dark);
 }
 
+/* Badge de notification */
+.nav-messages {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-messages .badge {
+  background-color: #FF6B6B;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 12px;
+  min-width: 18px;
+  height: 18px;
+  text-align: center;
+  line-height: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4px;
+  box-shadow: 0 2px 4px rgba(255, 107, 107, 0.3);
+}
 
 
 /* ============================================

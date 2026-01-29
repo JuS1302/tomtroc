@@ -39,12 +39,20 @@
           <ul>
 
             <?php if (isset($_SESSION['user'])) : ?>
+              <?php
+                // Compter les messages non lus
+                $messageManager = new MessageManager();
+                $unreadCount = $messageManager->countUnreadMessages($_SESSION['user']['id']);
+              ?>
               <li>
-                <a href="index.php?page=messages">
+                <a href="index.php?page=messages" class="nav-messages">
                   <span class="icon">
                     <img src="assets/images/Icon-messagerie.svg" alt="">
                   </span>
                   Messagerie
+                  <?php if ($unreadCount > 0) : ?>
+                    <span class="badge"><?= $unreadCount ?></span>
+                  <?php endif; ?>
                 </a>
               </li>
 
