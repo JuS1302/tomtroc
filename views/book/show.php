@@ -14,7 +14,7 @@
       <div class="book-detail-image">
         <?php if ($book->getImage()) : ?>
          <img
-          src="assets/images/books/<?= htmlspecialchars($book->getImage()) ?>"
+          src="<?= UPLOAD_BOOK_PATH . htmlspecialchars($book->getImage()) ?>"
           alt="<?= htmlspecialchars($book->getTitle()) ?>"
           class="book-image"
         >
@@ -53,7 +53,7 @@
                 <div class="owner-avatar">
                   <?php if ($user->getAvatar()) : ?>
                     <img
-                      src="assets/images/<?= htmlspecialchars($user->getAvatar()) ?>"
+                      src="<?= UPLOAD_AVATAR_PATH . htmlspecialchars($user->getAvatar()) ?>"
                       alt="Avatar"
                     >
                   <?php else : ?>

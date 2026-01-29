@@ -12,7 +12,7 @@
         <!-- IMAGE -->
         <div>
           <img
-            src="assets/images/books/<?= htmlspecialchars($book->getImage()) ?>"
+            src="<?= UPLOAD_BOOK_PATH . htmlspecialchars($book->getImage()) ?>"
             class="book-image-preview"
           >
 

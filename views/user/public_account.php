@@ -9,7 +9,7 @@
         <div class="avatar-container">
           <?php if ($user->getAvatar()) : ?>
             <img
-              src="assets/images/<?= htmlspecialchars($user->getAvatar()) ?>"
+              src="<?= UPLOAD_AVATAR_PATH . htmlspecialchars($user->getAvatar()) ?>"
               alt="Avatar"
               class="avatar-image"
             >
@@ -62,7 +62,7 @@
               <tr>
                 <td>
                   <img
-                    src="assets/images/books/<?= htmlspecialchars($book->getImage()) ?>"
+                    src="<?= UPLOAD_BOOK_PATH . htmlspecialchars($book->getImage()) ?>"
                     class="book-thumb"
                   >
                 </td>

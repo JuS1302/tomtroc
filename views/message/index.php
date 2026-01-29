@@ -13,7 +13,7 @@
           >
             <div class="conversation-avatar">
               <?php if ($conversation['other_avatar']): ?>
-                <img src="assets/images/<?= htmlspecialchars($conversation['other_avatar']) ?>">
+                <img src="<?= UPLOAD_AVATAR_PATH . htmlspecialchars($conversation['other_avatar']) ?>">
               <?php else: ?>
                 <div class="avatar-initial">
                   <?= strtoupper($conversation['other_username'][0]) ?>
@@ -65,7 +65,7 @@
                 <div class="message-avatar">
                   <?php if ($message->getSenderAvatar()): ?>
                     <img
-                      src="assets/images/<?= htmlspecialchars($message->getSenderAvatar()) ?>"
+                      src="<?= UPLOAD_AVATAR_PATH . htmlspecialchars($message->getSenderAvatar()) ?>"
                       alt=""
                     >
                   <?php else: ?>

@@ -4,6 +4,10 @@ session_start();
 // Définir la racine du projet
 define('ROOT', __DIR__);
 
+define('UPLOAD_AVATAR_PATH', 'assets/images/avatars/');
+
+define('UPLOAD_BOOK_PATH', 'assets/images/books/');
+
 /**
  * Autoload des classes (models + controllers)
  */

@@ -3,7 +3,7 @@
     <div class="book-image-wrapper">
       <?php if ($book->getImage()) : ?>
         <img
-          src="assets/images/books/<?= htmlspecialchars($book->getImage()) ?>"
+          src="<?= UPLOAD_BOOK_PATH . htmlspecialchars($book->getImage()) ?>"
           alt="<?= htmlspecialchars($book->getTitle()) ?>"
           class="book-image"
         >
