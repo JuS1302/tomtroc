@@ -45,6 +45,7 @@ class MessageController
         if ($activeUser) {
             $messages = $this->messageManager
                 ->getMessagesBetweenUsers($userId, $activeUser->getId());
+            $this->messageManager->markAsRead($activeUserId, $userId);
         }
     }
 

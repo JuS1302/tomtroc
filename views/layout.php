@@ -40,7 +40,7 @@
 
             <?php if (isset($_SESSION['user'])) : ?>
               <?php
-                // Compter les messages non lus
+
                 $messageManager = new MessageManager();
                 $unreadCount = $messageManager->countUnreadMessages($_SESSION['user']['id']);
               ?>
