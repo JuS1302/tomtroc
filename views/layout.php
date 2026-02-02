@@ -18,7 +18,7 @@
   <div class="header-content">
 
     <!-- LOGO -->
-    <a href="index.php" class="logo">
+    <a href="index.php?page=home" class="logo">
       <img src="assets/images/logo.svg" alt="TomTroc">
     </a>
 
@@ -29,7 +29,7 @@
         <!-- GAUCHE -->
         <li class="nav-group nav-left">
           <ul>
-            <li><a href="index.php">Accueil</a></li>
+            <li><a href="index.php?page=home">Accueil</a></li>
             <li><a href="index.php?page=books">Nos livres à l’échange</a></li>
           </ul>
         </li>

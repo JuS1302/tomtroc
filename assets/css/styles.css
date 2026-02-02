@@ -564,7 +564,7 @@ nav a:hover {
 }
 
 .values-container {
-  max-width: 720px;          /* colonne étroite */
+  max-width: 600px;
   margin: 0 auto;
   padding: 0 var(--container-padding);
 }
@@ -586,7 +586,7 @@ nav a:hover {
   font-weight: 300;
   line-height: 1.6;
   color: var(--color-text-dark);
-  margin-bottom: 20px;
+
 }
 
 .values-signature {
@@ -784,6 +784,7 @@ footer {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  overflow: hidden;
   background-color: var(--color-primary);
   color: var(--color-white);
   display: flex;
@@ -792,6 +793,12 @@ footer {
   font-size: 20px;
   font-weight: 700;
   flex-shrink: 0;
+}
+
+.owner-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .owner-info {
@@ -1018,14 +1025,13 @@ footer {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background-color: var(--color-primary);
   color: white;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 48px;
+  font-size: 35px;
   font-weight: 700;
 }
 
@@ -1946,6 +1952,7 @@ footer {
     width: 40px;
     height: 40px;
     font-size: 18px;
+    border-radius: 50%;
   }
 
   /* ===== AUTHENTIFICATION ===== */
@@ -1973,8 +1980,6 @@ footer {
     font-size: 15px;
   }
 
-
-
   .form-group label {
     font-size: 11px;
   }
@@ -1989,8 +1994,6 @@ footer {
     padding: 12px 24px;
     font-size: 14px;
   }
-
-
 
   .book-edit-grid > div:last-child {
     padding: var(--spacing-md);
