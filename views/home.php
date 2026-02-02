@@ -6,7 +6,11 @@
             <p>
                 Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres.
             </p>
+            <?php if (isset($_SESSION['user'])) : ?>
+            <a href="index.php?page=books" class="btn btn-primary">Découvrir</a>
+             <?php else : ?>
             <a href="index.php?page=register" class="btn btn-primary">Découvrir</a>
+            <?php endif; ?>
         </div>
 
         <div class="hero-image">
