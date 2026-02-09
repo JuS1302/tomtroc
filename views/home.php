@@ -74,9 +74,9 @@
     </div>
 </section>
 
-<section class="full-width-image">
+<div class="full-width-image">
   <img src="assets/images/image-pleine-home.jpg" alt="Bibliothèque pleine de livres">
-</section>
+</div>
 
 <!-- SECTION VALEURS -->
 <section class="values-section">
@@ -110,7 +110,7 @@
     </div>
 
     <div class="values-icon">
-      <img src="assets/images/heart.svg" alt="">
+      <img src="assets/images/heart.svg" alt="Logo coeur de la marque">
     </div>
   </div>
 </section>

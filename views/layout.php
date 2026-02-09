@@ -47,7 +47,7 @@
               <li>
                 <a href="index.php?page=messages" class="nav-messages">
                   <span class="icon">
-                    <img src="assets/images/Icon-messagerie.svg" alt="">
+                    <img src="assets/images/Icon-messagerie.svg" alt="Icon de la messagerie">
                   </span>
                   Messagerie
                   <?php if ($unreadCount > 0) : ?>
@@ -59,7 +59,7 @@
               <li>
                 <a href="index.php?page=account">
                   <span class="icon">
-                    <img src="assets/images/Icon-mon-compte.svg" alt="">
+                    <img src="assets/images/Icon-mon-compte.svg" alt="Icon mon compte">
                   </span>
                   Mon compte
                 </a>

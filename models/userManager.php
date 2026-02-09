@@ -72,7 +72,6 @@ class UserManager {
           return null;
       }
 
-      // On ajoute un password vide pour le constructeur
       $row['password'] = '';
 
       return new User($row);

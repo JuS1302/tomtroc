@@ -66,7 +66,7 @@
                   <?php if ($message->getSenderAvatar()): ?>
                     <img
                       src="<?= UPLOAD_AVATAR_PATH . htmlspecialchars($message->getSenderAvatar()) ?>"
-                      alt=""
+                      alt="Avatar"
                     >
                   <?php else: ?>
                     <?= strtoupper($message->getSenderUsername()[0]) ?>
